@@ -1,21 +1,24 @@
+//Required Modules
 const express = require('express');
 const http = require('http');
 require('dotenv').config();
 
+//HTTP Server
 const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
 
-
 //Connect to DB and Routes
 const connectDB = require('./db/connect');
 const tasks = require('./routes/tasks');
+const auth = require('./routes/auth');
 
 //Middleware
 app.use(express.static('public'));
 app.use(express.json());
 
 //API: endpoints
+app.use('/api/v1/auth', auth);
 app.use('/api/v1/tasks', tasks);
 
 //Socket.io server
@@ -31,4 +34,4 @@ const start = async () => {
     console.log(error);
   }  
 };
-start(); // <----- start
+start(); // <---------- start
