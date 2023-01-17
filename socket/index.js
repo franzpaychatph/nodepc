@@ -8,6 +8,7 @@ const SocketServer = (server) => {
     
     //const io = socketio(server);
     const io = socketio(server, {
+        allowEIO3: true,
         cors: {
           origin: ['https://admin.socket.io', 'http://localhost', 'http://localhost:3000', 'https://chatserver.paychat.ph'],
           credentials: true
