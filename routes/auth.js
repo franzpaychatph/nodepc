@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { requestToken, validateToken } = require('../controllers/auth');
 
-router.route('/requestToken').post(requestToken);
-router.route('/validateToken').post(validateToken);
+router.post('/requestToken', requestToken);
+router.post('/validateToken', validateToken);
 
 module.exports = router;
