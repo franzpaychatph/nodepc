@@ -1,5 +1,6 @@
 const { instrument } = require('@socket.io/admin-ui');
 const socketio = require('socket.io');
+const moment = require('moment'); 
 
 const users = new Map()
 const userSockets = new Map()
@@ -7,6 +8,7 @@ const userSockets = new Map()
 const SocketServer = (server) => {
     
     //const io = socketio(server);
+    var now_datetime_complete = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
     const io = socketio(server, {
         allowEIO3: true,
         cors: {
@@ -17,7 +19,7 @@ const SocketServer = (server) => {
 
     //socket.io events
     io.on('connection', (socket) => {
-        console.log('CONNECT: ' + socket.id);
+        console.log(now_datetime_complete + ': CONNECTED ' + socket.id );
 
         //ON ping_test
         socket.on("ping_test", async (data, callback) => {
@@ -52,6 +54,7 @@ const SocketServer = (server) => {
         //ON client disconnect
         socket.on('disconnect', async () => {
            console.log('DISCONNECT: ' + socket.id);
+           console.log(now_datetime_complete + ': DISCONNECT ' + socket.id );
         });
 
     });
