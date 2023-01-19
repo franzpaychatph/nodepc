@@ -1,11 +1,10 @@
 //Store ua_number => socket.id in userSockets array
 const addSocketUser = async (userSockets, user, socket) => {
-    console.log('addSocketUser');
-
     socket.data.ua_number = user.ua_number;
     if(user.ua_number === undefined){
 
     } else {
+        console.log('addSocketUser');
         userSockets.set(user.ua_number, socket.id);
         console.log([...userSockets.entries()]);
     }
@@ -13,11 +12,10 @@ const addSocketUser = async (userSockets, user, socket) => {
 
 //Remove ua_number => socket.id in userSockets array
 const removeSocketUser = async (userSockets, user, socket) => {
-    console.log('removeSocketUser');
-
     if(user.ua_number === undefined){
 
     } else {
+        console.log('removeSocketUser');
         userSockets.delete(user.ua_number);
         console.log([...userSockets.entries()]);
     }
