@@ -75,7 +75,11 @@ const SocketServer = (server) => {
 
     //socket.io admin ui
     instrument(io, {
-        auth : false
+        auth: { 
+            type: "basic",
+            username: "admin",
+            password: "$2a$12$KbnptH8FvukPFrVUb1FjZOH7boLLicf/trhKwNdti1DGGaA/f8wr2" // "$$Paychat123!" encrypted with bcrypt
+        },
     });
 }
 

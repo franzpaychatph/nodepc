@@ -1,4 +1,4 @@
-
+//Store ua_number => socket.id in userSockets array
 const addSocketUser = async (userSockets, user, socket) => {
     console.log('addSocketUser');
 
@@ -7,6 +7,7 @@ const addSocketUser = async (userSockets, user, socket) => {
     console.log([...userSockets.entries()]);
 };
 
+//Remove ua_number => socket.id in userSockets array
 const removeSocketUser = async (userSockets, user, socket) => {
     console.log('removeSocketUser');
 
@@ -14,6 +15,7 @@ const removeSocketUser = async (userSockets, user, socket) => {
     console.log([...userSockets.entries()]);
 };
 
+//Check if ua_number => socket.id is active in userSockets array
 const checkSocketStatus = async (userSockets, ua_number) => {
     console.log('checkSocketStatus: ' + ua_number);
 

@@ -10,8 +10,10 @@ const port = process.env.PORT || 3000;
 
 //Connect to DB and Routes
 const connectDB = require('./db/connect');
-const tasks = require('./routes/tasks');
 const auth = require('./routes/auth');
+const tasks = require('./routes/tasks');
+const chat = require('./routes/chat');
+const notification = require('./routes/notification');
 
 //Middleware
 app.use(express.static('public'));
@@ -20,6 +22,8 @@ app.use(express.json());
 //API: endpoints
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/tasks', tasks);
+app.use('/api/v1/chat', chat);
+app.use('/api/v1/notification', notification);
 
 //Socket.io server
 const SocketServer = require('./socket');
