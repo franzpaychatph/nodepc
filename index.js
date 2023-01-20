@@ -8,6 +8,10 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
 
+//Socket.io server
+const SocketServer = require('./socket');
+SocketServer(app, server);
+
 //Connect to DB and Routes
 const connectDB = require('./db/connect');
 const auth = require('./routes/auth');
@@ -25,9 +29,11 @@ app.use('/api/v1/tasks', tasks);
 app.use('/api/v1/chat', chat);
 app.use('/api/v1/notification', notification);
 
-//Socket.io server
-const SocketServer = require('./socket');
-SocketServer(server);
+app.get('/test', (req, res) => {
+  let io = req.app.get('socketio');
+  io.emit('hi!');
+  res.send('200');
+});
 
 //HTTP Server listen to port = port and connect to mongodb
 const start = async () => {
